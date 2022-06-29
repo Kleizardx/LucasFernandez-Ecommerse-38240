@@ -1,10 +1,17 @@
 import "./NavBar.css";
+import CarWidget from "./CarWidget/CarWidget";
 
-const NavBar = () => {
-  
+const NavBar = (props) => {
   return (
     <nav className="NavBar container-fluid">
       <div className="logoContainer">
+          <img
+            src={"../bxl-steam.svg"}
+            alt="IconStore"
+            width="75"
+            className="d-inline-flex"
+          />
+          {props.name}
       </div>
       <div className="nav-menus">
         <button className="btn">
@@ -43,6 +50,9 @@ const NavBar = () => {
             Categorias
           </a>
         </button>
+      </div>
+      <div className="CarWidget">
+        <CarWidget />
       </div>
     </nav>
   );
