@@ -4,11 +4,9 @@ import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 
 
-
 function App() {
 
-  const saludo = "Hola, buenas tardes"
-  const count = "0"
+  const saludo = "Contador de items"
 
   console.log(saludo) //Prueba
 
@@ -16,7 +14,7 @@ function App() {
     <>
       <header className="App-header">
         <NavBar />
-        <ItemListContainer greetings={saludo} count={count}/>
+        <ItemListContainer greetings={saludo}/>
         <img src={logo} className="App-logo" alt="logo" />
       </header>
     </>

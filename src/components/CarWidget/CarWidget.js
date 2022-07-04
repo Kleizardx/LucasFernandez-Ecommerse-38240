@@ -1,4 +1,3 @@
-// import ItemListContainer from "../../ItemListContainer/ItemListContainer";
 
 const CarWidget = () => {
 
@@ -10,7 +9,6 @@ const CarWidget = () => {
         width="65"
         className="d-inline-flex"
       />
-      {/* <ItemListContainer /> */}
     </div>
   );
 };
