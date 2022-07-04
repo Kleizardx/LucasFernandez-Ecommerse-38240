@@ -1,9 +1,10 @@
 
-const ItemListContainer = () => {
+const ItemListContainer = (props) => {
 
      return (
           <>
-          <h1>0</h1>
+          <h1>{props.count}</h1>
+          <h1>{props.greetings}</h1>
           </>
      )
 }

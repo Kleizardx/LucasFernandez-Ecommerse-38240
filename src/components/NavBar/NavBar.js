@@ -1,5 +1,5 @@
 import "./NavBar.css";
-import CarWidget from "./CarWidget/CarWidget";
+import CarWidget from "../CarWidget/CarWidget";
 
 const NavBar = (props) => {
   return (
