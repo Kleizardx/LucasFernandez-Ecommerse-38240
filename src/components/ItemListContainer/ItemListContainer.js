@@ -1,14 +1,26 @@
-import ItemCount from "../ItemCount/ItemCount"
+import "./ItemListContainer.css";
+import { useState, useEffect } from "react";
+import { getProductos } from "../db/data";
+import ItemList from "../ItemList/ItemList";
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
+  const [productos, setProductos] = useState([]);
 
-     return (
-          <>
-          <h1>{props.count}</h1>
-          <h1>{props.greetings}</h1>
-          <ItemCount />
-          </>
-     )
-}
+  useEffect(() => {
+    getProductos()
+      .then((prods) => {
+        setProductos(prods);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-export default ItemListContainer
+  return (
+    <main className="ItemListContainer">
+      <ItemList productos={productos} />
+    </main>
+  );
+};
+
+export default ItemListContainer;
