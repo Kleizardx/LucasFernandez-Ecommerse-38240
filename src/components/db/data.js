@@ -64,3 +64,11 @@ const productos = [
        }, 2000)
      })
    } 
+
+   export const getProductosById = (id) => { 
+    return new Promise (resolve => {
+      setTimeout (() => {
+        resolve(productos.find(prod => prod.id === id))
+      }, 2000)
+    })
+  }  
