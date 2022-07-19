@@ -1,20 +1,16 @@
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
-// import ItemListContainer from './components/ItemListContainer/ItemListContainer'
-import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
-
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+//i import { Link } from "react-router-dom";
 
 function App() {
-
-  // const saludo = "Contador de items"
-
   return (
     <>
-      <header className="App-header">
-        <NavBar />
-        {/* <ItemListContainer greetings={saludo} /> */}
-      </header>
-      <ItemDetailContainer />
+        <header className="App-header">
+          <NavBar />
+        </header>
+        <ItemListContainer />
+        {/* Los Links fueron trasladados a NavBar */}
     </>
   );
 }

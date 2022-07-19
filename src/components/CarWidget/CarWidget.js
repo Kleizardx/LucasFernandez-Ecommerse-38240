@@ -1,6 +1,4 @@
-
 const CarWidget = () => {
-
   return (
     <div className="CarWidget">
       <img

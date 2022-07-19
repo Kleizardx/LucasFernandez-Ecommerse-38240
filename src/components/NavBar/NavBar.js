@@ -1,17 +1,17 @@
 import "./NavBar.css";
 import CarWidget from "../CarWidget/CarWidget";
+import { Link } from "react-router-dom";
 
-const NavBar = (props) => {
+const NavBar = () => {
   return (
     <nav className="NavBar container-fluid">
       <div className="logoContainer">
-          <img
-            src={"../bxl-steam.svg"}
-            alt="IconStore"
-            width="75"
-            className="d-inline-flex"
-          />
-          {props.name}
+        <Link to="/"> <img
+          src={"../bxl-steam.svg"}
+          alt="IconStore"
+          width="75"
+          className="d-inline-flex"
+        /></Link>
       </div>
       <div className="nav-menus">
         <button className="btn">
@@ -33,22 +33,10 @@ const NavBar = (props) => {
           </a>
         </button>
         <button className="btn">
-          <a
-            href="https://github.com/Kleizardx/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Productos
-          </a>
+          <Link to="/detail/:productId">Buscar Productos</Link>
         </button>
         <button className="btn">
-          <a
-            href="https://www.youtube.com/watch?v=DWcJFNfaw9c"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Categorias
-          </a>
+          <Link to="/category/:categoryId">Categorias</Link>
         </button>
       </div>
       <div className="CarWidget">
