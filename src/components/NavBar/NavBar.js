@@ -1,8 +1,19 @@
 import "./NavBar.css";
 import CarWidget from "../CarWidget/CarWidget";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getCategories } from "../db/data";
 
 const NavBar = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getCategories().then((categories) => {
+      setCategories(categories);
+    });
+  }, []);
+
+
   return (
     <nav className="NavBar container-fluid">
       <div className="logoContainer">
@@ -35,9 +46,16 @@ const NavBar = () => {
         <button className="btn">
           <Link to="/detail/:productId">Buscar Productos</Link>
         </button>
+
         <button className="btn">
-          <Link to="/category/:categoryId">Categorias</Link>
+          {categories.map((cat) => (
+            <NavLink key={cat.id} to={`/category/${cat.id}`}>
+              {cat.description}
+            </NavLink>
+          ))}
         </button>
+
+
       </div>
       <div className="CarWidget">
         <CarWidget />

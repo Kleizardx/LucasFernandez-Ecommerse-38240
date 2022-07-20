@@ -8,32 +8,7 @@
   align-content: center;
   gap: 2rem 2rem;
 }
-.flexbox-container img {
-  animation: 1s ease;
-}
-.flexbox-container div {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(#eff0f1),
-      color-stop(98%, #c0c5ca)
-    ),
-    radial-gradient(
-      at bottom,
-      rgba(255, 255, 255, 0.3) 0%,
-      rgba(0, 0, 0, 0.3) 100%
-    );
-  background: linear-gradient(180deg, #eff0f1 0%, #c0c5ca 98%),
-    radial-gradient(
-      at bottom,
-      rgba(255, 255, 255, 0.3) 0%,
-      rgba(0, 0, 0, 0.3) 100%
-    );
-  background-blend-mode: screen;
-  border-radius: 20px;
-  width: 400;
-}
+
 .flex-item > h4 {
   color: white;
   text-transform: uppercase;
@@ -62,7 +37,7 @@
   border-radius: 20px;
   transition: all 0.3s ease-in-out;
 }
-.title-Card {
+.title-Card, .Option {
   text-shadow: 0px 0px 2px rgba(39, 39, 145, 0.5);
 }
 h1, h2, h3, h4, h5, p {
@@ -76,3 +51,23 @@ li {
   margin: 5px 5px 5px 5px;
   display: inline-block;
 } 
+
+.Option {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  display: inline-block;
+  border: 1px;
+  border-radius: 10px;
+  font-family: 'Teko', sans-serif;;
+  transition: all 0.5s ease-in-out;
+}
+
+.Option:hover {
+  letter-spacing: 5px;
+  color: rgba(255, 255, 255, 0.733);
+  text-shadow: 0px 0px 5px rgb(32, 32, 32);
+  transition: all 0.5s ease-in-out;
+}

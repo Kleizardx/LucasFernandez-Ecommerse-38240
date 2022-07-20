@@ -1,0 +1,36 @@
+.flexbox-container, .ButtonContainer {
+     text-align: center;
+     display: flex;
+     flex-flow: row wrap;
+     justify-content: center;
+     align-content: center;
+     gap: 2rem 2rem;
+   }
+   
+   .flexbox-container img {
+     animation: 1s ease;
+   }
+   
+   .flexbox-container div {
+     background: -webkit-gradient(
+         linear,
+         left top,
+         left bottom,
+         from(#eff0f1),
+         color-stop(98%, #c0c5ca)
+       ),
+       radial-gradient(
+         at bottom,
+         rgba(255, 255, 255, 0.3) 0%,
+         rgba(0, 0, 0, 0.3) 100%
+       );
+     background: linear-gradient(180deg, #eff0f1 0%, #c0c5ca 98%),
+       radial-gradient(
+         at bottom,
+         rgba(255, 255, 255, 0.3) 0%,
+         rgba(0, 0, 0, 0.3) 100%
+       );
+     background-blend-mode: screen;
+     border-radius: 20px;
+     width: 400;
+   }

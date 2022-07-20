@@ -1,26 +1,20 @@
-// Para no perderse, ya que me estoy haciendo un lio con los nombres.
-// ItemListContainer - resuelve la promesa de nuestra DB y se la pasa por props a ItemList
-// ItemList toma las props y las mapea a Item
-
-// ItemListContainer -> ItemList -> Item
-
-import "./ItemListContainer.css";
 import { useState, useEffect } from "react";
 import { getProductos } from "../db/data";
+import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
+import "./ItemListContainer.css";
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
+  const { categoryId } = useParams()
 
   useEffect(() => {
-    getProductos()
-      .then((prods) => {
-        setProductos(prods);
+    getProductos(categoryId).then(prods => {
+        setProductos(prods)
+      }).catch(error => {
+        console.log(error)
       })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  }, [categoryId]);
 
   return (
     <main className="ItemListContainer">

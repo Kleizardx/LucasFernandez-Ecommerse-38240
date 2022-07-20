@@ -1,45 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getProductosById } from "../db/data";
+import ItemDetail from "../ItemDetail/ItemDetail";
+import { useParams } from "react-router-dom";
 import "./ItemDetailContainer.css";
-import ItemDetailCard from "../ItemDetailCard/ItemDetailCard";
+
 
 const ItemDetailContainer = () => {
-     const [productos, setProductos] = useState([]);
-     const [input, setInput] = useState('');
+     const [productos, setProductos] = useState();
+     const [loading, setLoading] = useState(true);
 
+     const { productId } = useParams();
 
-     const handleSearch = () => {
+     useEffect(() => {
+          getProductosById(productId).then(item => {
+               setProductos(item)
+          }).catch(err => {
+               console.log(err)
+          }).finally(() => {
+               setLoading(false)
+          })
 
-          setTimeout(() => {
-               fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${input}`)
-                    .then(response => {
-                         return response.json()
-                    }).then(res => {
-                         setProductos(res.results)
-                         console.log(res)
-                    })
-               alert(`Busqueda realizada luego de 2 segundos ${input}`)
-          }, 2000);
-     }
+          return (() => {
+               setProductos()
+          })
+
+     }, [productId])
 
      return (
-          <main className="ItemDetailContainer">
-               <div className="input-group mb-3">
-                    <input type="text" className="form-control" placeholder="Ingresa lo que deseas buscar" onChange={(e) => setInput(e.target.value)} />
-                    <div className="input-group-append">
-                         <button onClick={handleSearch} className="btn btn-outline-secondary" type="button">Buscar</button>
-                    </div>
+          <main className="ItemDetailContainer text-center container flexbox-container">
+               <div>
+                    {
+                         loading ?
+                              <h1>Cargando...</h1>
+                              : productos ?
+                                   <ItemDetail {...productos} />
+                                   :
+                                   <h1>El producto no encontrado</h1>
+                    }
                </div>
-
-               <ItemDetailCard productos={productos} />
-
           </main>
      );
 };
-
-
-
-
-
-
 
 export default ItemDetailContainer;

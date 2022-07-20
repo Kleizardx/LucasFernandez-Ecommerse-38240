@@ -1,21 +1,19 @@
 import "./Item.css"
-import ItemCount from "../ItemCount/ItemCount";
+import { Link } from "react-router-dom";
 
 
-const Item = ({ nombre, precio, thumbnailUrl }) => {
+const Item = ({ id, title, price, thumbnail }) => {
 
-  const handleOnAdd = (quantity) => {
-    console.log(`Se agregaron al carro ${quantity} ${nombre}`);
-    alert(`Se agregaron al carro ${quantity} ${nombre}`)
-  };
 
   return (
     <div className="flex-item">
-      <h4 className="card-header">{nombre}</h4>
-      <h2 className="title-Card">${precio}</h2>
-      <img src={thumbnailUrl} alt={nombre} />
+      <h4 className="card-header">{title}</h4>
+      <h2 className="title-Card">${price}</h2>
+      <img src={thumbnail} alt={title} />
       <div>
-        <ItemCount onAdd={handleOnAdd} />
+        <h4 className="card-header">
+        <Link to={`/detail/${id}`} className="Option"> Ver mas </Link>
+      </h4>
       </div>
     </div>
   )
