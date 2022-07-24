@@ -20,6 +20,7 @@ root.render(
                <Route path='/' element={<ItemListContainer />} />
                <Route path='/detail/:productId' element={<ItemDetailContainer />} />
                <Route path='/category/:categoryId' element={<ItemListContainer />} />
+               <Route path='/cart/:cart' element={<ItemListContainer />} />
                <Route path='*' element={<h1>NOT FOUND 404</h1>} />
           </Routes>
      </BrowserRouter>

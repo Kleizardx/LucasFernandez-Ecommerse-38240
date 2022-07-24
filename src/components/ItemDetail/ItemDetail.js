@@ -1,11 +1,15 @@
-// import "./Item.css"
 import ItemCount from "../ItemCount/ItemCount";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const ItemDetail = ({id, title, price, thumbnail, category, description}) => {
+const ItemDetail = ({ title, price, thumbnail, category, description}) => {
+
+  const [quantity, setQuantity] = useState(0);
 
   const handleOnAdd = (quantity) => {
     console.log(`Se agregaron al carro ${quantity} ${title}`);
     alert(`Se agregaron al carro ${quantity} ${title}`)
+    setQuantity(quantity)
   };
 
   return (
@@ -17,7 +21,7 @@ const ItemDetail = ({id, title, price, thumbnail, category, description}) => {
       <h2 className="categoria-Card">Categoria: {category}</h2>
       <h2 className="descripcion-Card">Descripcion: {description}</h2>
       <div>
-        <ItemCount onAdd={handleOnAdd} />
+        {quantity > 0 ? <Link className="Option" to='/cart'> Ir al Carrito</Link> : <ItemCount onAdd={handleOnAdd} /> }
       </div>
     </div>
     </div>
