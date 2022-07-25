@@ -54,8 +54,6 @@ const NavBar = () => {
             </NavLink>
           ))}
         </button>
-
-
       </div>
       <div className="CarWidget">
         <CarWidget />
