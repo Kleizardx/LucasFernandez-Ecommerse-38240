@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { getProductosById } from "../db/data";
+import { firestoreDb } from "../services/firebase";
+import { getDoc, doc } from "firebase/firestore";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 import "./ItemDetailContainer.css";
@@ -7,23 +8,15 @@ import "./ItemDetailContainer.css";
 
 const ItemDetailContainer = (setCart, cart) => {
      const [productos, setProductos] = useState();
-     const [loading, setLoading] = useState(true);
+     const [loading, setLoading] = useState(false);
 
      const { productId } = useParams();
 
      useEffect(() => {
-          getProductosById(productId).then(item => {
-               setProductos(item)
-          }).catch(err => {
-               console.log(err)
-          }).finally(() => {
-               setLoading(false)
+          getDoc(doc(firestoreDb, 'productos', productId)).then(response => {
+               const productos = { id: response.id, ...response.data() }
+               setProductos(productos)
           })
-
-          return (() => {
-               setProductos()
-          })
-
      }, [productId])
 
      return (

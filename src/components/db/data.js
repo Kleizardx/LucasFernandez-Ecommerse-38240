@@ -46,7 +46,7 @@ const productos = [
   },
   {
     id: '6', 
-    title: "The Witcher", 
+    title: "The Witcher III", 
     price: 533, 
     category: "rpg", 
     thumbnail: "https://cdn.akamai.steamstatic.com/steam/apps/292030/header.jpg?t=1646996408",
@@ -79,7 +79,8 @@ const categories = [
   {id: 'metroidvania', description: 'Metroidvania'},
   {id: 'terror', description: 'Terror'},
   {id: 'accion rpg', description: 'Accion RPG'},
-  {id: 'rpg', description: 'RPG'}
+  {id: 'rpg', description: 'RPG'},
+  {id: 'SOULS', description: 'SOULS'}
 ]
 
 export const getCategories = () => {
