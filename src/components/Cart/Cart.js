@@ -1,10 +1,32 @@
 import { useContext } from "react";
 import "./Cart.css";
 import CartContext from "../Context/CartContext";
+import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { firestoreDb } from "../services/firebase/index";
+
 
 const Cart = () => {
 
-     const { cart, clearCart, removeItem } = useContext(CartContext);
+     const { cart, clearCart, removeItem, getTotal } = useContext(CartContext);
+
+     const addDocToCollection = () => {
+          const collectionRef = collection(firestoreDb, 'user')
+
+          const obUser = {
+               items: cart,
+               name: "Lucas",
+               lastname: "Fernandez",
+               phone: '1138053409',
+               email: "lucas.fernandez32zs@gmail.com",
+               total: getTotal(),
+               date: Timestamp.fromDate(new Date()),
+          }
+
+          addDoc(collectionRef, obUser).then(response => {
+               console.log(response.id)
+          })
+
+     }
 
      if (cart.length === 0) {
           return (
@@ -27,12 +49,15 @@ const Cart = () => {
                               <li className="list-group-item">Cantidad: {prod.quantity}</li>
                               <li className="list-group-item">Subtotal: ${prod.quantity * prod.price}</li>
                          </ul>
-                              <button type="button" className="btn_Container" onClick={() => removeItem(prod.id)}>Eliminar</button>
+                         <button type="button" className="btn_Container" onClick={() => removeItem(prod.id)}>Eliminar</button>
                     </div>)}
                </div>
                <div className="d-flexs py-3 container text-center">
                     <div className="card my-2 fs-3">
-                    Costo total de compra: {cart.reduce((totalCar, curr) => totalCar + curr.quantity * curr.price, 0)}
+                         Costo total de compra: {cart.reduce((totalCar, curr) => totalCar + curr.quantity * curr.price, 0)}
+                    </div>
+                    <div className="py-3">
+                         <button type="button" className="btn btn-primary" onClick={() => addDocToCollection([])}>Generar Orden</button>
                     </div>
                     <button type="button" className="btn btn-danger" onClick={() => clearCart([])}>Vaciar Carrito</button>
                </div>
