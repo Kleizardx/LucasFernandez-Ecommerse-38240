@@ -24,7 +24,7 @@ const ItemListContainer = () => {
   }, [categoryId]);
 
   if (productos.length === 0) {
-    return <div className="">No hay nada</div>
+    return <div className="">Cargando...</div>
   }
 
   return (

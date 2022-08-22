@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = (setCart, cart) => {
      const [productos, setProductos] = useState();
-     const [loading, setLoading] = useState(false);
+     const [loading, setLoading ] = useState(true);
 
      const { productId } = useParams();
 
@@ -15,20 +15,14 @@ const ItemDetailContainer = (setCart, cart) => {
           getDoc(doc(firestoreDb, 'productos', productId)).then(response => {
                const productos = { id: response.id, ...response.data() }
                setProductos(productos)
+               setLoading(false)
           })
      }, [productId])
 
      return (
           <main className="ItemDetailContainer text-center container flexbox-container">
                <div>
-                    {
-                    loading ?
-                    <h1>Cargando...</h1>
-                    : productos ?
-                    <ItemDetail {...productos} setCart={setCart} cart={cart} />
-                    :
-                    <h1>El producto no encontrado</h1>
-                    }
+                    { loading ? <h1>Cargando...</h1> : productos ? <ItemDetail {...productos} setCart={setCart} cart={cart} /> : <h1>El producto no encontrado</h1> }
                </div>
           </main>
      );

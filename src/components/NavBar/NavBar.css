@@ -1,8 +1,11 @@
 .NavBar {
+  background-color: #524b4b;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .NavBar a {

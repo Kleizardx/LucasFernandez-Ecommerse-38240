@@ -13,7 +13,6 @@ const NavBar = () => {
     });
   }, []);
 
-
   return (
     <nav className="NavBar container-fluid">
       <div className="logoContainer">
@@ -43,10 +42,6 @@ const NavBar = () => {
             Contacto
           </a>
         </button>
-        <button className="btn">
-          <Link to="/detail/:productId">Buscar Productos</Link>
-        </button>
-
         <button className="btn">
           {categories.map((cat) => (
             <NavLink key={cat.id} to={`/category/${cat.id}`}>
