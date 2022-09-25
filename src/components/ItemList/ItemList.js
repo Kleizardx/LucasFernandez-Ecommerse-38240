@@ -3,7 +3,7 @@ import './ItemList.css'
 
 const ItemList = ({ productos }) => {
      return (
-          <div className="container flexbox-container gap-3">
+          <div className="container flexbox-container">
                {productos.map(prod => <Item key={prod.id} {...prod} />)}
           </div>
      )

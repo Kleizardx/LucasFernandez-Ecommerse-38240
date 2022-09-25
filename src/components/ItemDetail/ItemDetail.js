@@ -19,8 +19,6 @@ const ItemDetail = ({ id, title, price, thumbnail, category, description }) => {
         alert(`No se puede agregar 0 ${title}`)
       )
     }
-
-    console.log(`Se agregaron al carro ${count} ${title}`);
     alert(`Se agregaron al carro ${count} ${title}`)
 
     const objProduct = { id, title, price, count, thumbnail };
@@ -40,9 +38,6 @@ const ItemDetail = ({ id, title, price, thumbnail, category, description }) => {
         <h2 className="categoria-Card">Categoria: {category}</h2>
         <h2 className="descripcion-Card">Descripcion: {description}</h2>
         <div>
-          {/* {isInCart(id) > 0 ? <Link className="Option" to='/cart'>Ir al Carrito</Link>
-            :
-            <ItemCount onAdd={handleOnAdd} />} */}
             {cart ? <ItemCount onAdd={handleOnAdd}/> : <Link className="Option" to="/cart/:cart">Ir al Carrito</Link>}
         </div>
       </div>

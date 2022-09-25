@@ -1,10 +1,8 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import "./Cart.css";
 import CartContext from "../Context/CartContext";
-import { addDoc, collection, Timestamp, updateDoc, doc, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, Timestamp, getDocs} from "firebase/firestore";
 import { firestoreDb } from "../services/firebase/index";
-import { useParams } from "react-router-dom";
-
 
 const Cart = () => {
 
@@ -24,37 +22,20 @@ const Cart = () => {
           }
 
           addDoc(collectionRef, obUser).then(response => {
-               console.log(response.id)
                alert("Compra realizada con exito ID: " + response.id)
           })
-
-          const getUserId = () => {
-               const [productos, setProductos] = useState([]);
-               const { categoryId } = useParams()
-             
-               useEffect(() => {
-             
-                 const collectionRef = categoryId 
-                 ? query(collection(firestoreDb, 'productos'), where('category', '==', categoryId)) 
-                 : collection(firestoreDb, 'productos');
-             
-                 getDocs(collectionRef).then(response => {
-                   const productos = response.docs.map(doc => {
-                     return {id: doc.id, ...doc.data()}
-                   })
-                   setProductos(productos)
-                 })
-               }, [userId]);
      }
 
-     const updateOrder = () => {
-          const orderDoc = doc(firestoreDb, 'user', '1');
+     const GetOrderUser = () => {
+          const collectionRef = collection(firestoreDb, 'user')
 
-          updateDoc(orderDoc, { total: getTotal() }).then(response => {
-               console.log(response)
+          getDocs(collectionRef).then(response => {
+               const orderUser = response.docs.map(doc => {
+                    return {id: doc.id, ...doc}
+               })
+                  alert("PEDIDOS " + orderUser.map(id => "\n Pedido ID: "  + id.id ))
           })
      }
-
 
      if (cart.length === 0) {
           return (
@@ -68,7 +49,7 @@ const Cart = () => {
           <>
                <p className="titleCar">Carrito de Compras</p>
                <div className="container container_Card">
-                    {cart.map(prod => <div className="d-flex justify-content-between col-3 card my-2" key={prod.id} {...prod}>
+                    {cart.map(prod => <div className="d-flex justify-content-between col-2 card my-2" key={prod.id} {...prod}>
                          <img src={prod.thumbnail} className="card-img-top" alt={prod.title} />
                          <div className="card-body">
                               <h5 className="card-title">Titulo: {prod.title}</h5>
@@ -88,18 +69,8 @@ const Cart = () => {
                          <button type="button" className="btn btn-primary" onClick={() => addDocToCollection([])}>Generar Orden</button>
                     </div>
                     <button type="button" className="btn btn-danger" onClick={() => clearCart()}>Vaciar Carrito</button>
-                    <button type="button" className="btn btn-danger" onClick={() => updateOrder()}>Actualizar Documento</button>
-               </div>
-               <div>
-                    {cart.map(user => <div className="d-flex justify-content-between col-3 card my-2" key={user.id} {...user}>
-                         <div className="card-body">
-                              <h5 className="card-title">Pedido ID: {user.id}</h5>
-                         </div>
-                         <ul className="list-group list-group-flush">
-                              <li className="list-group-item">Cantidad: {user.quantity} </li>
-                              <li className="list-group-item">Costo total de compra: {cart.reduce((totalCar, curr) => totalCar + curr.quantity * curr.price, 0)}</li>
-                         </ul>
-                    </div>)}
+                    <button type="button" className="m-1 btn btn-success" >Cargar Datos del Datos</button>
+                    <button type="button" className="btn btn-danger" onClick={() => GetOrderUser()}>Ver ID Pedido</button>
                </div>
           </>
      );

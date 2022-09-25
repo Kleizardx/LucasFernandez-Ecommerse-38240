@@ -4,7 +4,7 @@
   flex-flow: row wrap;
   justify-content: center;
   align-content: center;
-  gap: 2rem 2rem;
+  gap: 2rem;
  }
  
  .flexbox-container div {
@@ -15,6 +15,4 @@
       rgba(0, 0, 0, 0.3) 100%
     );
   background-blend-mode: screen;
-  border-radius: 20px;
-  width: 400;
  }
