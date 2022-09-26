@@ -1,39 +1,22 @@
 import { useContext } from "react";
 import "./Cart.css";
 import CartContext from "../Context/CartContext";
-import { addDoc, collection, Timestamp, getDocs} from "firebase/firestore";
+import FormBuyer from "../Form/Form";
+import { collection, getDocs } from "firebase/firestore";
 import { firestoreDb } from "../services/firebase/index";
 
 const Cart = () => {
 
-     const { cart, clearCart, removeItem, getTotal } = useContext(CartContext);
-
-     const addDocToCollection = () => {
-          const collectionRef = collection(firestoreDb, 'user')
-
-          const obUser = {
-               items: cart,
-               name: "Lucas",
-               lastname: "Fernandez",
-               phone: '1138053409',
-               email: "lucas.fernandez32zs@gmail.com",
-               total: getTotal(),
-               date: Timestamp.fromDate(new Date()),
-          }
-
-          addDoc(collectionRef, obUser).then(response => {
-               alert("Compra realizada con exito ID: " + response.id)
-          })
-     }
+     const { cart, clearCart, removeItem } = useContext(CartContext);
 
      const GetOrderUser = () => {
           const collectionRef = collection(firestoreDb, 'user')
 
           getDocs(collectionRef).then(response => {
                const orderUser = response.docs.map(doc => {
-                    return {id: doc.id, ...doc}
+                    return { id: doc.id, ...doc }
                })
-                  alert("PEDIDOS " + orderUser.map(id => "\n Pedido ID: "  + id.id ))
+               alert("PEDIDOS " + orderUser.map(id => "\n Pedido ID: " + id.id))
           })
      }
 
@@ -65,12 +48,11 @@ const Cart = () => {
                     <div className="card my-2 fs-3">
                          Costo total de compra: {cart.reduce((totalCar, curr) => totalCar + curr.quantity * curr.price, 0)}
                     </div>
-                    <div className="py-3">
-                         <button type="button" className="btn btn-primary" onClick={() => addDocToCollection([])}>Generar Orden</button>
-                    </div>
                     <button type="button" className="btn btn-danger" onClick={() => clearCart()}>Vaciar Carrito</button>
-                    <button type="button" className="m-1 btn btn-success" >Cargar Datos del Datos</button>
                     <button type="button" className="btn btn-danger" onClick={() => GetOrderUser()}>Ver ID Pedido</button>
+               </div>
+               <div>
+                    <FormBuyer />
                </div>
           </>
      );
