@@ -5,39 +5,46 @@ import { addDoc, collection, Timestamp } from "firebase/firestore";
 import CartContext from "../Context/CartContext";
 
 
-const FormBuyer = () => {
+function FormBuyer() {
   const { cart, getTotal } = useContext(CartContext);
-  const [value, setValue] = useState('')
+  const [detail, setDetail] = useState({
+    fname: "",
+    lname: "",
+    email: "",
+    tel: "",
+  })
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDetail((prev) => {
+      return {...prev, [name]: value}
+    })
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // console.log(detail)
   };
-
-
+  
   function addDocToCollection() {
     const collectionRef = collection(firestoreDb, 'user');
 
-    const obUser = {
+    const userBuy = {
       items: cart,
-      fname: value,
-      lname: value,
-      phone: value,
-      email: 'lucas.fernandez32zs@gmail.com',
+      fname: detail.fname,
+      lname: detail.lname,
+      email: detail.email,
+      tel: detail.tel,
       total: getTotal(),
       date: Timestamp.fromDate(new Date()),
     };
 
-    addDoc(collectionRef, obUser).then(response => {
+    addDoc(collectionRef, userBuy).then(response => {
       alert("Compra realizada con exito ID: " + response.id);
     });
 
-
-
   }
+
 
   return (
     <>
@@ -45,27 +52,25 @@ const FormBuyer = () => {
         <form id="contactForm" onSubmit={handleSubmit} >
           <div className="mb-3">
             <label form="fname" className="form-label">Nombre</label>
-            <input type="text" className="form-control" id="fname" value={value} onChange={handleChange} placeholder="Nombre" />
+            <input type="text" name="fname" className="form-control" onChange={handleChange} placeholder="Nombre" />
           </div>
           <div className="mb-3">
             <label form="lname" className="form-label">Apellido</label>
-            <input type="text" className="form-control" id="lname" value={value} onChange={handleChange} placeholder="Apellido" />
+            <input type="text" name="lname" className="form-control" onChange={handleChange} placeholder="Apellido" />
           </div>
           <div className="mb-3">
             <label form="email" className="form-label">Email</label>
-            <input type="email" className="form-control" id="emailBuyer" aria-describedby="emailHelp" placeholder="Email@" />
-            <div id="emailHelp" className="form-text">Indicar el Email del comprador</div>
+            <input type="email" name="email" className="form-control" onChange={handleChange} aria-describedby="emailHelp" placeholder="Email@" />
           </div>
           <div className="mb-3">
             <label form="tel" className="form-label">Telefono</label>
-            <input type="number" className="form-control" id="tel" />
+            <input type="number" name="tel" className="form-control" onChange={handleChange} />
           </div>
-          <button type="submit" className="btn btn-primary" id="submit" onClick={() => addDocToCollection([])}>Generar Orden</button>
+          <button type="submit" className="btn btn-primary" onClick={() => addDocToCollection([])}>Generar Orden</button>
         </form>
       </div>
     </>
   )
-
 }
 
 export default FormBuyer;
