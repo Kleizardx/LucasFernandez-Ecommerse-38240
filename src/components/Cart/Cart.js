@@ -46,10 +46,12 @@ const Cart = () => {
                </div>
                <div className="d-flexs py-3 container text-center">
                     <div className="card my-2 fs-3">
-                         Costo total de compra: {cart.reduce((totalCar, curr) => totalCar + curr.quantity * curr.price, 0)}
+                         Costo total de compra: ${cart.reduce((totalCar, curr) => totalCar + curr.quantity * curr.price, 0)}
                     </div>
-                    <button type="button" className="btn btn-danger" onClick={() => clearCart()}>Vaciar Carrito</button>
-                    <button type="button" className="btn btn-danger" onClick={() => GetOrderUser()}>Ver ID Pedido</button>
+                    <div className="ButtonContainer">
+                         <button type="button" className="btnEmpty" onClick={() => clearCart()}>Vaciar Carrito</button>
+                         <button type="button" className="btnId" onClick={() => GetOrderUser()}>Ver ID Pedido</button>
+                    </div>
                </div>
                <div>
                     <FormBuyer />

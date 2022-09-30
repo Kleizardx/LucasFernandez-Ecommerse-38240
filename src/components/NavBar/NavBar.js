@@ -14,8 +14,8 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="NavBar container-fluid">
-      <div className="logoContainer">
+    <nav className="NavBar">
+      <div className="">
         <Link to="/"> <img
           src={"../bxl-steam.svg"}
           alt="IconStore"

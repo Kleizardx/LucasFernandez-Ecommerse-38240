@@ -1,5 +1,4 @@
-.container_Card,
-.ButtonContainer {
+.container_Card {
   text-align: center;
   display: flex;
   flex-flow: row wrap;
@@ -45,4 +44,64 @@
   color: rgba(255, 255, 255, 0.733);
   text-shadow: 0px 0px 5px rgb(32, 32, 32);
   transition: all 0.5s ease-in-out;
+}
+
+
+.ButtonContainer {
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  gap: 2rem 2rem;
+  padding: 10px;
+  margin: 10px;
+}
+
+.btnEmpty {
+  background: linear-gradient(to bottom, #ff0432, #ff735ab9);
+  border: 0;
+  border-radius: 10px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 2.5;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.295)
+}
+
+.btnEmpty:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.295), -.125rem -.125rem 1rem rgb(247, 3, 48), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.btnId {
+  background: linear-gradient(to left, #00a9c7, #5ad9ffb9);
+  border: 0;
+  border-radius: 10px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 2.5;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.295)
+}
+
+.btnId:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.11), -.125rem -.125rem 1rem rgba(6, 152, 163, 0.5), .125rem .125rem 1rem rgba(90, 255, 118, 0.5);
 }

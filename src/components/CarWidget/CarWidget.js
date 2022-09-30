@@ -7,7 +7,7 @@ const CarWidget = () => {
   const { getQuantity } = useContext(CartContext);
 
   return (
-    <div className="CarWidget">
+    <div className="">
       <Link to="/cart/:cart">
       <img
         src={"../bx-cart.svg"}

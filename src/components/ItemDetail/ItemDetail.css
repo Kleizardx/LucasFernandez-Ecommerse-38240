@@ -3,7 +3,7 @@
   text-transform: uppercase;
   padding: 5px;
   margin-bottom: 10px;
-  background-image: linear-gradient(-20deg, #b9bdbc 0%, #8d8d8d 100%);
+  background-image: linear-gradient(-30deg, #a1dfcf 0%, #ccc6c6 100%);
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
@@ -27,28 +27,29 @@
   transition: all 0.3s ease-in-out;
 }
 
-h1, h2, h3, h4, h5, p {
+h2, h3, h4, h5, p {
   text-transform: uppercase;
 	line-height: 1.5;
 	font-weight: 400;
-  color: rgba(0, 0, 0, 0.63);
+  color: black;
 }
+
 li {
   list-style: none;
   margin: 5px 5px 5px 5px;
   display: inline-block;
 } 
-.Option {
+.Option2 {
   font-size: 1.8rem;
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: rgb(255, 255, 255);
+  color: rgb(72, 118, 156);
   text-decoration: none;
   transition: all 0.5s ease-in-out;
 }
-.Option:hover {
+.Option2:hover {
   letter-spacing: 5px;
   color: rgba(255, 255, 255, 0.733);
-  text-shadow: 0px 0px 5px rgb(32, 32, 32);
+  text-shadow: 0px 0px 5px rgb(79, 105, 116);
   transition: all 0.5s ease-in-out;
 }

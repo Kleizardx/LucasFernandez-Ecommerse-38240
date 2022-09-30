@@ -2,6 +2,7 @@ import ItemCount from "../ItemCount/ItemCount";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CartContext from "../Context/CartContext"
+import "./ItemDetail.css"
 
 const ItemDetail = ({ id, title, price, thumbnail, category, description }) => {
   const { addItem, isInCart } = useContext(CartContext);
@@ -34,11 +35,11 @@ const ItemDetail = ({ id, title, price, thumbnail, category, description }) => {
       <div className="flex-item">
         <h4 className="card-header">Titulo: {title}</h4>
         <img src={thumbnail} alt={title} />
-        <h2 className="price-Card">Precio ${price}</h2>
-        <h2 className="categoria-Card">Categoria: {category}</h2>
-        <h2 className="descripcion-Card">Descripcion: {description}</h2>
+        <h3 className="">Categoria: {category}</h3>
+        <p className="">Descripcion: {description}</p>
+        <h3 className="">Precio ${price}</h3>
         <div>
-            {cart ? <ItemCount onAdd={handleOnAdd}/> : <Link className="Option" to="/cart/:cart">Ir al Carrito</Link>}
+            {cart ? <ItemCount onAdd={handleOnAdd}/> : <Link className="Option2" to="/cart/:cart">Ir al Carrito</Link>}
         </div>
       </div>
     </div>

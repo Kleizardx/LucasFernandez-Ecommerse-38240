@@ -66,7 +66,7 @@ function FormBuyer() {
             <label form="tel" className="form-label">Telefono</label>
             <input type="number" name="tel" className="form-control" onChange={handleChange} />
           </div>
-          <button type="submit" className="btn btn-primary" onClick={() => addDocToCollection([])}>Generar Orden</button>
+          <button type="submit" className="btnId" onClick={() => addDocToCollection([])}>Generar Orden</button>
         </form>
       </div>
     </>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./ItemCount.css"
 
 const ItemCount = ({onAdd}) => {
      const [count, setCount] = useState(0);
@@ -23,11 +24,11 @@ const ItemCount = ({onAdd}) => {
 
      return (
           <div className="ItemCount ButtonContainer py-3">
-               <button className="btn btn-dark" onClick={rest}> - </button>
+               <button className="btnRest" onClick={rest}> - </button>
                <p>{count}</p>
-               <button className="btn btn-danger" onClick={resetCounter}> Reset </button>
-               <button className="btn btn-dark" onClick={sum}> + </button>
-               <button className="btn btn-dark" onClick={() => onAdd(count)}> Add Car </button>
+               <button className="btnReset" onClick={resetCounter}> Reset </button>
+               <button className="btnSum" onClick={sum}> + </button>
+               <button className="btnAdd" onClick={() => onAdd(count)}> Add Car </button>
           </div>
      );
 };

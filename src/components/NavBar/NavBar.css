@@ -1,8 +1,6 @@
 .NavBar {
-  background-color: #524b4b;
+  background-color: #727171;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
   padding-bottom: 10px;
   margin-bottom: 20px;
@@ -25,17 +23,9 @@
 
 .NavBar a:hover {
   letter-spacing: 5px;
-  color: rgba(0, 224, 138, 0.733);
-  text-shadow: 0px 0px 5px rgba(0, 255, 157, 0.75);
+  background-image: linear-gradient(60deg, #96deda 0%, #50c9c3 100%);
+  text-shadow: 0px 0px 5px rgba(58, 58, 58, 0.89);
   transition: all 0.5s ease-in-out;
-}
-
-.logoContainer {
-  display: inline-block;
-  min-width: 20%;
-  align-items: center;
-  text-align: start;
-  justify-content: center;
 }
 
 .nav-menus {
@@ -53,11 +43,4 @@
   text-align: center;
   justify-content: center;
   transition: all 0.5s ease-in-out;
-}
-
-.CarWidget h3:hover {
-  font-size: 2rem;
-  color: rgba(0, 224, 138, 0.733);
-  text-shadow: 0px 0px 5px rgba(0, 255, 157, 0.75);
-  transition: all 0.3s ease;
 }
